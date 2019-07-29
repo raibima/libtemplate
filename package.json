@@ -2,26 +2,23 @@
   "name": "libtemplate",
   "version": "0.1.0",
   "main": "index.js",
-  "module": "dist/index.esm.js",
-  "umd:main": "dist/index.umd.js",
+  "browser": "dist/index.umd.production.min.js",
   "author": "Raibima Putra <rayp1100@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "npm-run-all": "^4.1.5",
     "prop-types": "^15.7.2",
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-replace": "^2.2.0"
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.1"
   },
   "scripts": {
-    "build": "run-s build:*",
-    "build:dev": "rollup -c",
-    "build:prod": "NODE_ENV=production rollup -c",
+    "build": "rollup -c",
     "dev": "rollup -c -w"
   },
   "peerDependencies": {
