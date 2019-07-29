@@ -29,16 +29,26 @@
     "rollup-plugin-terser": "^5.1.1"
   },
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build": "rollup -c config/rollup.config.js",
+    "dev": "rollup -c config/rollup.config.js -w",
     "test": "jest",
     "posttest": "yarn checksize",
-    "checksize": "yarn build && bundlesize"
+    "checksize": "yarn build && bundlesize --config config/bundlesize.json"
   },
   "peerDependencies": {
     "react": ">=16.8"
   },
   "dependencies": {
     "prop-types": "^15.7.2"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "bracketSpacing": false
+  },
+  "jest": {
+    "testPathIgnorePatterns": [".eslintrc.js"]
   }
 }

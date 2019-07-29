@@ -1,15 +1,16 @@
-import babel from 'rollup-plugin-babel';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import replace from 'rollup-plugin-replace';
-import { terser } from 'rollup-plugin-terser';
+import babel from 'rollup-plugin-babel'
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
+import replace from 'rollup-plugin-replace'
+import {terser} from 'rollup-plugin-terser'
 
-const ENTRY_POINT = 'src/index.js';
-const GLOBAL_NAME = 'MyLib';
-const UMD_FILE = 'dist/index.umd.js';
-const CJS_FILE = 'dist/index.cjs.js';
-const ESM_FILE = 'dist/index.esm.js';
-const EXTERNAL = ['react', 'prop-types'];
+const ENTRY_POINT = 'src/index.js'
+const GLOBAL_NAME = 'MyLib'
+const UMD_FILE = 'dist/index.umd.js'
+const CJS_FILE = 'dist/index.cjs.js'
+const ESM_FILE = 'dist/index.esm.js'
+const EXTERNAL = ['react', 'prop-types']
+const BABEL_CONFIG = './config/babel.config.js'
 
 export default [
   // UMD
@@ -27,11 +28,12 @@ export default [
     external: EXTERNAL,
     plugins: [
       babel({
+        configFile: BABEL_CONFIG,
         exclude: 'node_modules/**',
         plugins: [
           [
             'babel-plugin-transform-react-remove-prop-types',
-            { removeImport: true },
+            {removeImport: true},
           ],
         ],
       }),
@@ -55,6 +57,7 @@ export default [
     external: EXTERNAL,
     plugins: [
       babel({
+        configFile: BABEL_CONFIG,
         exclude: 'node_modules/**',
       }),
       resolve(),
@@ -76,6 +79,7 @@ export default [
     external: EXTERNAL,
     plugins: [
       babel({
+        configFile: BABEL_CONFIG,
         exclude: 'node_modules/**',
       }),
       resolve(),
@@ -87,4 +91,4 @@ export default [
       }),
     ],
   },
-];
+]
