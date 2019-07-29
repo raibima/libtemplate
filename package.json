@@ -5,5 +5,10 @@
   "module": "dist/index.esm.js",
   "umd:main": "dist/index.umd.js",
   "author": "Raibima Putra <rayp1100@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0"
+  }
 }
