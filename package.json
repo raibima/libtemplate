@@ -8,8 +8,12 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bundlesize": "^0.18.0",
+    "jest": "^24.8.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.1",
@@ -20,8 +24,9 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "posttest": "npm run checksize",
-    "checksize": "npm run build && bundlesize"
+    "test": "jest",
+    "posttest": "yarn checksize",
+    "checksize": "yarn build && bundlesize"
   },
   "peerDependencies": {
     "react": ">=16.8"
