@@ -1,7 +1,7 @@
 {
   "name": "libtemplate",
   "version": "0.1.0",
-  "main": "dist/index.js",
+  "main": "index.js",
   "module": "dist/index.esm.js",
   "umd:main": "dist/index.umd.js",
   "author": "Raibima Putra <rayp1100@gmail.com>",
