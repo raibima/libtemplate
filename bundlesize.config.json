@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "path": "./dist/index.umd.js",
+      "maxSize": "2 kB"
+    }
+  ]
+}
