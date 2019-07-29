@@ -1,0 +1,7 @@
+{
+  "name": "libtemplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Raibima Putra <raibima.putra@traveloka.com>",
+  "license": "MIT"
+}
