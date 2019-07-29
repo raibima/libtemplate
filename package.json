@@ -2,14 +2,13 @@
   "name": "libtemplate",
   "version": "0.1.0",
   "main": "index.js",
-  "browser": "dist/index.umd.production.min.js",
   "author": "Raibima Putra <rayp1100@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "prop-types": "^15.7.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "rollup": "^1.17.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.1",
@@ -23,5 +22,8 @@
   },
   "peerDependencies": {
     "react": ">=16.8"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
   }
 }

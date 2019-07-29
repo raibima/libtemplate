@@ -4,66 +4,55 @@ import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import { terser } from 'rollup-plugin-terser';
 
+const ENTRY_POINT = 'src/index.js';
+const GLOBAL_NAME = 'MyLib';
+const UMD_FILE = 'dist/index.umd.js';
+const CJS_FILE = 'dist/index.cjs.js';
+const ESM_FILE = 'dist/index.esm.js';
+const EXTERNAL = ['react', 'prop-types'];
+
 export default [
-  // UMD DEV
+  // UMD
   {
-    input: 'src/index.js',
+    input: ENTRY_POINT,
     output: {
-      name: 'MyLib',
-      file: 'dist/index.umd.development.js',
+      name: GLOBAL_NAME,
+      file: UMD_FILE,
       format: 'umd',
       globals: {
         react: 'React',
+        'prop-types': 'PropTypes',
       },
     },
-    external: ['react'],
+    external: EXTERNAL,
     plugins: [
       babel({
         exclude: 'node_modules/**',
+        plugins: [
+          [
+            'babel-plugin-transform-react-remove-prop-types',
+            { removeImport: true },
+          ],
+        ],
       }),
       resolve(),
       commonjs({
         include: /node_modules/,
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify('development'),
-      }),
-    ],
-  },
-  // UMD PROD
-  {
-    input: 'src/index.js',
-    output: {
-      name: 'MyLib',
-      file: 'dist/index.umd.production.min.js',
-      format: 'umd',
-      globals: {
-        react: 'React',
-      },
-    },
-    external: ['react'],
-    plugins: [
-      babel({
-        exclude: 'node_modules/**',
-      }),
-      resolve(),
-      commonjs({
-        include: /node_modules/,
-      }),
-      replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
+        __DEV__: 'false',
       }),
       terser(),
     ],
   },
-  // CJS DEV
+  // CJS
   {
-    input: 'src/index.js',
+    input: ENTRY_POINT,
     output: {
-      file: 'dist/index.development.js',
+      file: CJS_FILE,
       format: 'cjs',
     },
-    external: ['react'],
+    external: EXTERNAL,
     plugins: [
       babel({
         exclude: 'node_modules/**',
@@ -73,18 +62,18 @@ export default [
         include: /node_modules/,
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify('development'),
+        __DEV__: `process.env.NODE_ENV === 'development'`,
       }),
     ],
   },
-  // CJS PROD
+  // ESM
   {
-    input: 'src/index.js',
+    input: ENTRY_POINT,
     output: {
-      file: 'dist/index.production.min.js',
-      format: 'cjs',
+      file: ESM_FILE,
+      format: 'es',
     },
-    external: ['react'],
+    external: EXTERNAL,
     plugins: [
       babel({
         exclude: 'node_modules/**',
@@ -94,9 +83,8 @@ export default [
         include: /node_modules/,
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
+        __DEV__: `process.env.NODE_ENV === 'development'`,
       }),
-      terser(),
     ],
   },
 ];
