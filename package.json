@@ -33,6 +33,7 @@
   "scripts": {
     "build": "rollup -c config/rollup.config.js",
     "dev": "rollup -c config/rollup.config.js -w",
+    "lint": "eslint src",
     "test": "jest",
     "posttest": "yarn checksize",
     "checksize": "yarn build && bundlesize --config config/bundlesize.json"

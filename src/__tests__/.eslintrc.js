@@ -24,4 +24,9 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'prefer-let/prefer-let': 'error',
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
 }
