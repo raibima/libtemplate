@@ -5,7 +5,7 @@ export function MyComponent() {
   return <div />;
 }
 
-export useMyHook() {
+export function useMyHook() {
   return true;
 }
 
