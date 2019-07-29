@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 export function MyComponent(props) {
-  return <p>{props.text}</p>;
+  return <p>{props.text}</p>
 }
 
 export function useMyHook() {
-  return true;
+  return true
 }
 
 MyComponent.propTypes = {
   text: PropTypes.string,
-};
+}
