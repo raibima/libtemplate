@@ -7,14 +7,25 @@ import pkg from './package.json';
 export default [
   {
     input: 'src/index.js',
-    output: {
-      name: 'MyLib',
-      file: pkg['umd:main'],
-      format: 'umd',
-      globals: {
-        react: 'React',
+    output: [
+      {
+        name: 'MyLib',
+        file: pkg['umd:main'],
+        format: 'umd',
+        globals: {
+          react: 'React',
+        },
       },
-    },
+      {
+        file: pkg['main'],
+        format: 'cjs',
+      },
+      {
+        file: pkg['module'],
+        format: 'es',
+      },
+    ],
+    external: ['react'],
     plugins: [
       babel({
         exclude: 'node_modules/**',
@@ -24,7 +35,9 @@ export default [
         include: /node_modules/,
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'process.env.NODE_ENV': JSON.stringify(
+          process.env.NODE_ENV || 'development'
+        ),
       }),
     ],
   },
