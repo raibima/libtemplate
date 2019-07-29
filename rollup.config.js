@@ -4,6 +4,9 @@ import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import pkg from './package.json';
 
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const __DEV__ = NODE_ENV === 'development';
+
 export default [
   {
     input: 'src/index.js',
@@ -17,7 +20,9 @@ export default [
         },
       },
       {
-        file: pkg['main'],
+        file: __DEV__
+          ? 'dist/index.development.js'
+          : 'dist/index.production.min.js',
         format: 'cjs',
       },
       {
